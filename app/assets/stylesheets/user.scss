@@ -7,6 +7,24 @@
     margin: 0;
     padding: 0;
   }
+  .social_login {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    input {
+      margin-top: 5px;
+      color: white;
+      
+      &.facebook {
+        background-color: rgb(42, 64, 105);
+      }
+      &.twitter {
+        background-color: rgb(87, 198, 222);
+      }
+      &.line {
+        background-color: rgb(69, 216, 56);
+      }
+    }
+  }
   .links {
     text-align: right;
   }

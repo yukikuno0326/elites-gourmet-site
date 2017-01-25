@@ -29,6 +29,14 @@ gem 'carrierwave'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'omniauth'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-twitter'
+
+gem 'omniauth-line'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
