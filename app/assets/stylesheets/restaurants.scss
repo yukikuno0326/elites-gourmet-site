@@ -1,3 +1,30 @@
 .login_logout_wrapper {
   text-align: right;
 }
+
+.wrapper.restaurant_input, .wrapper.restaurant_confirm {
+  margin-top: 0;
+}
+ 
+.restaurant_confirm {
+  tr.image {
+   img {
+     max-width: 380px;
+     max-height: 380px;
+   }
+  }
+}
+ 
+ul.genre_list {
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline-block;
+    color: white;
+    background-color: #535353;
+    border-radius: 8px;
+    margin-right: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}

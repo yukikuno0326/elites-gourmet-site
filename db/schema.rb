@@ -11,7 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125155256) do
+ActiveRecord::Schema.define(version: 20170126144544) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurant_genres", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.integer  "genre_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "restaurant_genres", ["genre_id"], name: "index_restaurant_genres_on_genre_id"
+  add_index "restaurant_genres", ["restaurant_id"], name: "index_restaurant_genres_on_restaurant_id"
+
+  create_table "restaurant_images", force: :cascade do |t|
+    t.integer  "restaurant_id"
+    t.string   "image"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "telephone_number"
+    t.string   "address"
+    t.boolean  "has_private_room"
+    t.integer  "seat_count"
+    t.datetime "open_date"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

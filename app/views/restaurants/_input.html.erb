@@ -1,0 +1,72 @@
+<div class="wrapper restaurant_input">
+  <div class="header">
+    <%= link_to 'レストラン一覧に戻る', root_path %>
+  </div>
+
+  <hr>
+
+  <h3>レストラン登録</h3>
+
+  <%= form_for @restaurant, url: {action: 'confirm'} do |f| %>
+    <div class="alert">
+      <% if flash[:alert] %>
+        <% flash[:alert].each do |message| %>
+          <p class="alert"><%= message %></p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :telephone_number %><br/>
+      <%= f.text_field :telephone_number, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %><br/>
+      <%= f.text_field :address, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :genre_ids %><br/>
+      <% Genre.all.order(:id).each do |g| %>
+        <label class="checkbox-inline">
+          <%= f.check_box :genre_ids, { multiple: true, include_hidden: false, checked: @restaurant.genre_ids.include?(g.id)}, g.id, nil %>
+          <%= g.name %>
+        </label>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :has_private_room %><br/>
+      <%= f.radio_button :has_private_room, true %>有
+      <%= f.radio_button :has_private_room, false %>無
+    </div>
+
+    <div class="form-group">
+      <%= f.label :seat_count %><br/>
+      <%= f.number_field :seat_count, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :open_date %><br/>
+      <%= f.date_field :open_date, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag I18n.t('activerecord.attributes.restaurant.image') %><br/>
+      <%= f.fields_for :restaurant_images do |rf| %>
+        <%= rf.file_field :image %> <%= "設定中[#{rf.object.image}]" if rf.object.image? %>
+        <%= rf.hidden_field :image_cache %>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "確認", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

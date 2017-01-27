@@ -1,5 +1,15 @@
 ja:
   activerecord:
+    attributes:
+      restaurant:
+        name: '店名'
+        telephone_number: '電話番号'
+        address: '住所'
+        genre_ids: 'ジャンル'
+        has_private_room: '個室'
+        seat_count: '席数'
+        open_date: 'オープン日'
+        image: '画像'
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
@@ -199,3 +209,9 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+    
+  restaurant:
+    created: '作成しました。'
+    updated: '更新しました。'
+    deleted: '削除しました。'
+    image_error: '一つ目の画像は選択必須です。'

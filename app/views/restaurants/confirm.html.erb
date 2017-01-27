@@ -1,0 +1,79 @@
+<div class="wrapper restaurant_confirm">
+  <h3>レストラン登録確認</h3>
+
+  <%= form_for @restaurant do |f| %>
+    <table class="table">
+      <tr>
+        <th style="width:100px"><%= f.label :name %></th>
+        <td><%= @restaurant.name %></td>
+        <%= f.hidden_field :name %>
+      </tr>
+      <tr>
+        <th><%= f.label :telephone_number %></th>
+        <td><%= @restaurant.telephone_number %></td>
+        <%= f.hidden_field :telephone_number %>
+      </tr>
+      <tr>
+        <th><%= f.label :address %></th>
+        <td>
+          <%= @restaurant.address %>
+          <div style='width: 350px;'>
+            <div id="map" style='width: 350px; height: 350px;'></div>
+          </div>
+        </td>
+        <%= f.hidden_field :address %>
+      </tr>
+      <tr>
+        <th><%= f.label :genre_ids %></th>
+        <td>
+          <%= render 'restaurants/genre_list', restaurant: @restaurant %>
+        </td>
+        <% @restaurant.genre_ids.each do |r| %>
+           <%= f.hidden_field :genre_ids, multiple: true, value: r %>
+        <% end %>
+      </tr>
+      <tr>
+        <th><%= f.label :has_private_room %></th>
+        <td><%= @restaurant.has_private_room ? '有' : '無' %></td>
+        <%= f.hidden_field :has_private_room %>
+      </tr>
+      <tr>
+        <th><%= f.label :seat_count %></th>
+        <td><%= @restaurant.seat_count %></td>
+        <%= f.hidden_field :seat_count %>
+      </tr>
+      <tr>
+        <th><%= f.label :open_date %></th>
+        <td><%= @restaurant.open_date %></td>
+        <%= f.hidden_field :open_date %>
+      </tr>
+
+      <%= f.fields_for :restaurant_images do |rf| %>
+        <% if rf.object.image? %>
+          <tr class="image">
+            <th><%= f.label :image %></th>
+            <td><%= image_tag rf.object.image.url %></td>
+          </tr>
+        <% end %>
+        <%= rf.hidden_field :image %>
+        <%= rf.hidden_field :image_cache %>
+      <% end %>
+
+    </table>
+
+    <div class="actions">
+      <%= f.submit "戻る", class: 'btn btn-danger', name: 'back' %>
+      <%= f.submit "登録", class: 'btn btn-primary' %>
+    </div>
+
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%= raw @map.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
