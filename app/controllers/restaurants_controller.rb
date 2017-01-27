@@ -7,7 +7,12 @@ class RestaurantsController < ApplicationController
   end
   
   def show
-    
+    @restaurant = Restaurant.find(params[:id])
+    @map = Gmaps4rails.build_markers([@restaurant]) do |res, marker|
+      marker.lat res.latitude
+      marker.lng res.longitude
+      marker.json({title: res.name})
+    end
   end
   
   def new

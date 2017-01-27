@@ -1,17 +1,19 @@
-<div class="per_restaurant">
-  <div class="name">
-    <%= restaurant.name %>
-  </div>
-  <div class="content clearfix">
-    <div class="image">
-      <% if restaurant.restaurant_images.first.image? %>
-        <%= image_tag restaurant.restaurant_images.first.image.url %>
-      <% end %>
+<%= link_to restaurant_path(restaurant) do %>
+  <div class="per_restaurant">
+    <div class="name">
+      <%= restaurant.name %>
     </div>
-    <div>
-      <div class="genres">
-        <%= render 'restaurants/genre_list', restaurant: restaurant %>
+    <div class="content clearfix">
+      <div class="image">
+        <% if restaurant.restaurant_images.first.image? %>
+          <%= image_tag restaurant.restaurant_images.first.image.url %>
+        <% end %>
+      </div>
+      <div>
+        <div class="genres">
+          <%= render 'restaurants/genre_list', restaurant: restaurant %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
