@@ -60,6 +60,38 @@
       </div>
     </div>
   </div>
+  
+  <% if user_signed_in? %>
+    <div class="my_review_wrapper">
+      <% if @review %>
+        <%= form_for @review do |f| %>
+          <%= f.cktext_area :body, rows: 3, placeholder: 'レビューを書く' %>
+          <div class="footer_menu clearfix">
+            <div class="rank">
+              <%= f.label :rank %>  <%= f.select :rank, 5.downto(1).map {|m| [m, m]}, {}, class: 'form-control' %>
+            </div>
+            <div class="review_post">
+              <%= f.submit 'レビュー', class: 'btn btn-primary' %>
+            </div>
+          </div>
+          <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
+        <% end %>
+      <% else %>
+        <p>レビュー済です</p>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <hr>
+  
+  <div class="review_list_wrapper">
+    レビュー数 <%= @restaurant.reviews.length %>
+    
+    <div class="review_list">
+      <% @restaurant.reviews.each do |review| %>
+        <%= render 'reviews/per_review', review: review %>
+      <% end %>
+    </div>
 </div>
 
 <script type="text/javascript">

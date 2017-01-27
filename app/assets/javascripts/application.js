@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require underscore/underscore-min
 //= require gmaps/google
+//= require ckeditor/init
 //= require_tree .

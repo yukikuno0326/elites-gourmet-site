@@ -215,3 +215,6 @@ ja:
     updated: '更新しました。'
     deleted: '削除しました。'
     image_error: '一つ目の画像は選択必須です。'
+  review:
+    created: 'レビューを追加しました。'
+    deleted: 'レビューを削除しました。'
