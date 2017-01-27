@@ -2,7 +2,7 @@
   text-align: right;
 }
 
-.wrapper.restaurant_input, .wrapper.restaurant_confirm {
+.wrapper.restaurant_input, .wrapper.restaurant_confirm, .wrapper.restaurant_index {
   margin-top: 0;
 }
  
@@ -26,5 +26,64 @@ ul.genre_list {
     margin-right: 3px;
     padding-left: 8px;
     padding-right: 8px;
+  }
+}
+
+.wrapper.restaurant_index {
+  width: 95%;
+
+  .new_restaurant {
+    margin-bottom: 15px;
+  }
+
+  .search_wrapper {
+    vertical-align: top;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+
+      }
+    }
+  }
+
+  .restaurant_list_count {
+    margin-bottom: 10px;
+  }
+
+  .restaurant_list {
+    .per_restaurant {
+      border: 1px solid;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 5px;
+
+      .name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+     .content {
+        > div {
+          float: left;
+        }
+
+        .image {
+          width: 100px;
+          height: 100px;
+          text-align: center;
+          img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+        .genres {
+
+        }
+      }
+    }
   }
 }

@@ -1,3 +1,49 @@
-<div class="new_restaurant">
-  <%= button_to 'レストラン追加', new_restaurant_path, method: :get, class: 'btn btn-primary' %>
+<div class="wrapper restaurant_index">
+  <div class="new_restaurant">
+    <%= button_to 'レストラン追加', new_restaurant_path, method: :get, class: 'btn btn-primary' %>
+  </div>
+  
+  <div class="clearfix">
+    <div class="col-md-4">
+      <div class="search_wrapper">
+        <%= search_form_for @q, url: user_root_path do |f| %>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <%= f.label :name %> <%= f.text_field :name_cont %>
+            </li>
+            <li class="list-group-item">
+              <%= f.label :seat_count %><br />
+              <%= f.text_field :seat_count_gteq %> ~ <%= f.text_field :seat_count_lteq %>
+            </li>
+            <li class="list-group-item">
+              <%= f.label :has_private_room %><br />
+              <%= f.radio_button :has_private_room_eq, true %>有
+              <%= f.radio_button :has_private_room_eq, true %>無
+            </li>
+            <li class="list-group-item">
+              <%= f.label :open_date %><br />
+              <%= f.date_field :open_date_gteq %> ~ <%= f.date_field :open_date_lteq %>
+            </li>
+            <li class="list-group-item">
+              <%= f.submit '検索', class: 'btn btn-primary' %>
+              <%= link_to 'クリア', request.path, class: 'btn btn-default' %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="restaurant_list_count">
+        <%= @restaurants.length == 0 ? 0 : @restaurants.offset_value + 1 %> 〜 <%= @restaurants.offset_value + @restaurants.length %> 件目を表示 / 全<%= @restaurants.total_count %>
+      </div>
+      <div class="restaurant_list">
+        <% @restaurants.each do |restaurant| %>
+          <%= render 'restaurants/per_restaurant', restaurant: restaurant %>
+        <% end %>
+      </div>
+      <div>
+        <%= paginate @restaurants %>
+      </div>
+    </div>
+  </div>
 </div>
