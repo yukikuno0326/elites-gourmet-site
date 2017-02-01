@@ -13,6 +13,9 @@
         <div class="genres">
           <%= render 'restaurants/genre_list', restaurant: restaurant %>
         </div>
+        <div class="introduction">
+          <%= truncate(restaurant.introduction, omission: '…') %>
+        </div>
       </div>
     </div>
   </div>
