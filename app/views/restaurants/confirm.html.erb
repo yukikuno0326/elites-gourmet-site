@@ -10,7 +10,7 @@
       </tr>
       <tr>
         <th><%= f.label :introduction %></th>
-        <td><%= @restaurant.introduction %></td>
+        <td><%= raw @restaurant.introduction %></td>
         <%= f.hidden_field :introduction %>
       </tr>      
       <tr>
