@@ -3,6 +3,7 @@ ja:
     attributes:
       restaurant:
         name: '店名'
+        introduction: '店舗紹介'
         telephone_number: '電話番号'
         address: '住所'
         genre_ids: 'ジャンル'

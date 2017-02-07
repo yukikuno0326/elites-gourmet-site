@@ -9,6 +9,11 @@
         <%= f.hidden_field :name %>
       </tr>
       <tr>
+        <th><%= f.label :introduction %></th>
+        <td><%= raw @restaurant.introduction %></td>
+        <%= f.hidden_field :introduction %>
+      </tr>      
+      <tr>
         <th><%= f.label :telephone_number %></th>
         <td><%= @restaurant.telephone_number %></td>
         <%= f.hidden_field :telephone_number %>
@@ -47,7 +52,7 @@
         <td><%= @restaurant.open_date %></td>
         <%= f.hidden_field :open_date %>
       </tr>
-
+      
       <%= f.fields_for :restaurant_images do |rf| %>
         <% if rf.object.image? %>
           <tr class="image">
